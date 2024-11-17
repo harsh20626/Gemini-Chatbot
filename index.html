@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEMINI CLONE</title>
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <!-- Linking Google Fonts For Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Basic styling for the hamburger menu */
+    .menu {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+      font-size: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 25px;
+      height: 20px;
+    }
+
+    .menu span {
+      display: block;
+      width: 100%;
+      height: 4px;
+      background-color: #333;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-item {
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <span class="logo">🤖</span>
+      <h1 class="title">GEMINI CLONE</h1>
+    </div>
+    <p class="subtitle">How can I help you today?</p>
+
+    <!-- Suggestion list -->
+    <ul class="suggestion-list">
+      <li class="suggestion">
+        <h4 class="text">Make a basic calculator using python.</h4>
+        <span class="icon material-symbols-rounded">code</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">What are your thoughts on the future of artificial intelligence?</h4>
+        <span class="icon material-symbols-rounded">lightbulb</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">What is Schrödinger's Cat: A Quantum Paradox?</h4>
+        <span class="icon material-symbols-rounded">explore</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">About Multiverse theory of Physics.</h4>
+        <span class="icon material-symbols-rounded">lightbulb</span>
+      </li>
+    </ul>
+
+    <!-- Hamburger Menu -->
+    <div class="menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="dropdown">
+      <div class="dropdown-item" id="about-developer">About Developer</div>
+    </div>
+  </header>
+
+  <!-- Chat List / Container -->
+  <div class="chat-list"></div>
+
+  <!-- Typing Area -->
+  <div class="typing-area">
+    <form action="#" class="typing-form">
+      <div class="input-wrapper">
+        <input type="text" placeholder="Message Gemini..." class="typing-input" required />
+        <button id="send-message-button" class="icon material-symbols-rounded">send</button>
+      </div>
+      <div class="action-buttons">
+        <span id="theme-toggle-button" class="icon material-symbols-rounded">light_mode</span>
+        <span id="delete-chat-button" class="icon material-symbols-rounded">delete</span>
+      </div>
+    </form>
+    <p class="disclaimer-text"></p>
+  </div>
+
+  <!-- About Developer Modal -->
+  <div id="about-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>About Harsh Raj Verma</h2>
+      <p>Hi, I am Harsh Raj Verma. I am in class 11 and I love coding. I'm passionate about learning new technologies and building projects that make a difference. I enjoy exploring different areas of programming.</p>
+    </div>
+  </div>
+
+  <script src="/script.js"></script>
+  <script>
+    // Show/Hide dropdown menu
+    const menu = document.querySelector('.menu');
+    const dropdown = document.querySelector('.dropdown');
+
+    menu.addEventListener('click', () => {
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Modal functionality
+    const aboutDeveloperBtn = document.getElementById('about-developer');
+    const aboutModal = document.getElementById('about-modal');
+    const closeModal = document.querySelector('.close-btn');
+
+    aboutDeveloperBtn.addEventListener('click', () => {
+      aboutModal.style.display = 'block';
+    });
+
+    closeModal.addEventListener('click', () => {
+      aboutModal.style.display = 'none';
+    });
+
+    window.onclick = function(event) {
+      if (event.target === aboutModal) {
+        aboutModal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
